@@ -26,6 +26,16 @@
   width: 101.53%; /** the exact amount of width needed to be flui*/
 }
 
+.tab-container { 
+  min-height: 505px;
+}
+
+.timeline-tracks { 
+  height: 60%;
+  width: 85%;
+  margin-left: 3%;
+}
+
 .editor-subtitle { 
   color: #c8d6e5; 
   text-align: center;

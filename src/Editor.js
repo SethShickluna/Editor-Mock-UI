@@ -18,64 +18,60 @@ import shareIcon from "./shareicon.png";
 
 //{props.location.editorProps.name}
 
-let activeTab = 0; 
-
-function getTabClass(index){
-    if(index === activeTab){
+function getTabClass(index, myTab){
+    if(index === myTab){
         return "nav-tab-titles active-nav"; 
     }
     return "nav-tab-titles"; 
 }
 
-function navigate(obj){ 
-    switch(obj.target.innerHTML){
-        case "Trimmer":
-            activeTab = 1; 
-            break;
-        case "Color":
-            activeTab = 2; 
-            break;
-        case "Effects":
-            activeTab = 3; 
-            break;
-        case "Audio":
-            activeTab = 4; 
-            break;
-        case "Export":
-            activeTab = 5; 
-            break;
-        default:
-            activeTab = 0; 
-            break;
-    }
-}
-
 function displayTab(tabNum, name){
     switch(tabNum){
         case 1:
-            //trimmer
-            break;
+            return Trimmer(); 
         case 2:
-            //color 
-            break;
+            return Audio(); 
         case 3:
-            //effects 
-            break;
-        case 4:
-            //audio 
-            break;
-        case 5:
-            //export
-            break;
-        default:
+            return Export(); 
+        default: //realistically this is always 0
             //video 
             return Video(name);
     }
 }
 
-function Video(name){
+function Trimmer(){
     return(
         <Row> {/** Video timeline */}
+            <Col className="auto grid-border"> {/** Media */}
+                <div className="tab-container"></div>
+            </Col>
+        </Row>
+    )
+}
+
+function Audio(){
+    return(
+        <Row> {/** Video timeline */}
+        <Col className="auto grid-border"> {/** Media */}
+            <div className="tab-container"></div>
+        </Col>
+    </Row>
+    )
+}
+
+function Export(){
+    return(
+        <Row> {/** Video timeline */}
+            <Col className="auto grid-border"> {/** Media */}
+                <div className="tab-container"></div>
+            </Col>
+        </Row>
+    )
+}
+
+function Video(name){
+    return(
+        <Row style={{minHeight: "500px"}}> {/** Video timeline */}
             <Col className="col-md-2 auto grid-border"> {/** Media */}
                 <h4 className="editor-subtitle centered">
                     Video Effects
@@ -91,8 +87,33 @@ function Video(name){
 
 
 function Editor(props){
+    let projectName;
+    if(props.location.editorProps === undefined){
+        projectName = "untitled.sse"
+    }else{
+        projectName = props.location.editorProps.name; 
+    }
 
     const [tab, setTab] = useState(0);
+
+    const updateTab = obj => {
+        switch(obj.target.innerHTML){
+            case "Video":
+                setTab(0);
+                break; 
+            case "Trimmer": 
+                setTab(1);
+                break; 
+            case "Audio":
+                setTab(2); 
+                break; 
+            case "Export":
+                setTab(3);
+                break;
+        }
+        
+    };
+
 
     return (
         <div>
@@ -110,28 +131,28 @@ function Editor(props){
                     <Col className="col-md-1" align="center"/>
                     <Col className="col-md-1 auto" align="center">
                         <div className="nav-tab-container">{/**Video */}
-                            <h3 onClick={navigate} className={getTabClass(0)}>
+                            <h3 onClick={updateTab} className={getTabClass(0, tab)}>
                                 Video
                             </h3>
                         </div>
                     </Col>
                     <Col className="col-md-1" align="center">
                         <div>{/**Trimmer */}
-                            <h3 onClick={navigate} className={getTabClass(1)}>
+                            <h3 onClick={updateTab} className={getTabClass(1, tab)}>
                                 Trimmer
                             </h3>
                         </div>
                     </Col>
                     <Col className="col-md-1" align="center">
                         <div>{/**Audio */}
-                            <h3 onClick={navigate} className={getTabClass(4)}>
+                            <h3 onClick={updateTab} className={getTabClass(2, tab)}>
                                 Audio
                             </h3>
                         </div>
                     </Col>
                     <Col className="col-md-1" align="center">
                         <div>{/**Export */}
-                            <h3 onClick={navigate} className={getTabClass(5)}>
+                            <h3 onClick={updateTab} className={getTabClass(3, tab)}>
                                 Export
                             </h3>
                         </div>
@@ -146,7 +167,7 @@ function Editor(props){
                 </Row>
                 <Row > {/**Contains  2 columns */}
                     <Col className="auto"> {/**Contains part of the editor which switches via tab */}
-                        {displayTab(activeTab, props.location.editorProps.name)}
+                        {displayTab(tab, projectName)}
                         <Row> {/** Video timeline */}
                             <Col className="col-md-2 auto grid-border"> {/** Media */}
                                 <h4 className="editor-subtitle centered">

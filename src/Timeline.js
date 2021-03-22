@@ -9,6 +9,8 @@ import {
 //icons 
 import VideoIcon from "./videoicon.png";
 import AudioIcon from "./audioicon.png";
+import VideoTrack from "./videoTrack.PNG"; 
+import AudioTrack from "./audiotrack.PNG"; 
 
 const iconStyle = {
     color: 'white', 
@@ -21,7 +23,7 @@ const mediaControlStyle = {
 }
 
 const trackNames = ["Video", "Audio"]
-const trackImg = []; 
+const trackImg = [VideoTrack, AudioTrack]; 
 
 const tracks = [1, 2];
 
@@ -35,6 +37,7 @@ function mediaTracks(num){
                      <MdBlock style={iconStyle}/>
                      <MdVerticalAlignCenter style={iconStyle}/>
                      <MdTitle style={iconStyle}/>
+                     <img src={trackImg[num - 1]} className="timeline-tracks"></img>
                 </div>
             </Col>
         </Row>

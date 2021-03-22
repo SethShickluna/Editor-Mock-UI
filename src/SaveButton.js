@@ -23,9 +23,9 @@ const SaveButton = (props) => {
 
     const [name, setName] = React.useState("");
 
-      const updateName = obj => {
+    const updateName = obj => {
         setName(obj.target.value);
-      };
+    };
   
     return (
         <div>
@@ -42,7 +42,7 @@ const SaveButton = (props) => {
                         editorProps:{name:name + ".sse"}}}>
                     <Button color="primary" onClick={toggle}>Confirm</Button>{' '}
                 </Link>
-                <Link className="New-Project-Link" to='/home'>
+                <Link className="New-Project-Link" to='/editor'>
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </Link>
                     
