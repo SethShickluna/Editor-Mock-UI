@@ -1,32 +1,214 @@
-.App {
-  text-align: center;
-}
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .App-logo:hover {
+    animation: App-logo-spin infinite 10s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Menu-Title { 
+    color: #ff9f43; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    text-align: center;
+    font-size: 80px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-filler{
+  background-color: #fafafa;
+  height:42px;
+  width: 101.53%; /** the exact amount of width needed to be flui*/
 }
+
+.editor-subtitle { 
+  color: #c8d6e5; 
+  text-align: center;
+  margin-top: 2%;
+}
+
+.centered{
+  text-align: center;
+}
+
+.help-box { 
+  border: 1px dotted #576574;
+  background-color: #353b48;
+}
+
+.timeline-icons{
+  width: 50px; 
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.add-media-container{
+  min-height: 90px;
+}
+
+.timeline-icons:hover{
+  border: 1px dotted #3498db;  
+}
+
+.media-logo { 
+  width: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-logo:hover{
+  border: 1px solid #2e86de;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-tab-titles{ 
+  color: #c8d6e5; 
+  padding-top: 30%;
+}
+
+.active-nav{ 
+  color: #2e86de; 
+  text-decoration: underline;
+}
+
+.nav-tab-titles:hover{ 
+  color: #2e86de; 
+  cursor: pointer;
+}
+
+.editor-image-icon{
+  padding: 15px;
+  width: 80px;
+}
+
+.tab-content-view { 
+  margin-top: 2%;
+  min-height: 400px;
+}
+
+.editor-image-icon:hover{
+  border: 2px solid #54a0ff;
+  cursor: pointer;
+}
+
+.FAQ-Question{
+  font-weight: bold;
+}
+
+.FAQ-Answer{
+  color: #c8d6e5; 
+}
+
+.FAQ-List-OL{
+  color: #ff6b6b;
+}
+
+.FAQ-List-UL{
+  color: #1dd1a1;
+}
+
+.Menu-Content-Box { 
+    width: 900px;
+    height: 500px;
+    border: 2px solid #c8d6e5;
+    padding-top: 20px;
+    padding-left: 50px;
+    margin: 10px;
+}
+
+.media-preview{
+  padding: 4px;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.media-content-box { 
+  width: 350px;
+  height: 250px;
+  margin: 10px;
+}
+
+.track-content { 
+  min-height: 90px;
+  border: 1px solid #7f8c8d; 
+  background-color: black;
+}
+
+.track-title-content { 
+  min-height: 80px;
+  border: 1px solid #ffd32a; 
+  background-color: #1f282f;
+  padding-left: 10px;
+  margin-top: 3px;
+}
+
+.media-subtitle { 
+  color: #c8d6e5; 
+  size: 10px;
+}
+
+.grid-border{
+  border:2px solid black;
+  margin: 1px;
+  background-color: #1e272e;
+}
+
+.new-project-container{ 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 40px;
+
+}
+
+.Thumbnail-Box{
+    width: 140px; 
+    height: 90px;
+    border: 2px solid #ff9f43;
+    padding: 10px;
+    margin: 8px;
+}
+
+.project-title{
+    color: #c8d6e5; 
+    font-size: xx-large;
+}
+.Thumbnail-Box:hover{
+    border: 5px solid #ff9f43;
+    cursor:grab;
+}
+
+.Content-Subtitle { 
+    color: white;
+    font-size: medium;
+}
+
+.image-preview { 
+  width: 80%;
+  border: 2px solid black;
+  border-left: 30px solid black;
+  border-right: 30px solid black;
+  margin-bottom: 20px;
+}
+
+.New-Project-Link {
+  color: #61dafb;
+  text-decoration:none;
+  font-size: xx-large;
+}
+
+.New-Project-Link:hover{
+    text-decoration: underline;
+    color: #61dafb; /** keep the color the same*/
+}
+
+
 
 @keyframes App-logo-spin {
   from {
