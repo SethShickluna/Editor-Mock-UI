@@ -1,7 +1,7 @@
 //node imports
 import React, { useState } from "react"; 
 import { Link } from "react-router-dom";
-import {Container, Row, Col, Button} from "reactstrap"; 
+import {Container, Row, Col, Button, Tooltip} from "reactstrap"; 
 
 //components
 import HelpBox from "./HelpBox"; 
@@ -16,10 +16,10 @@ import EffectsPanel from "./EffectsPanel";
 import AudioEffectsPanel from "./AudioEffectsPanel";
 import ExportTab from "./ExportTab";
 import RecentlyUsed from "./RecentlyUsed";
+import ExportOptionForm from "./ExportOptionForm";
 
 //images//assets
 import homeIcon from "./homeicon.png"; 
-import quickexportIcon from "./quickexport.png"; 
 import shareIcon from "./shareicon.png";
 
 
@@ -39,7 +39,7 @@ function displayTab(tabNum, name){
         case 2:
             return Audio(); 
         case 3:
-            return Export(); 
+            return Export(name); 
         default: //realistically this is always 0
             //vi deo 
             return Video(name);
@@ -74,11 +74,24 @@ function Audio(){
     )
 }
 
-function Export(){
+function Export(name){
+
     return(
         <Row style={{minHeight: "500px"}}> {/** Video timeline */}
-            <Col className="auto grid-border"> {/** Media */}
+            <Col className="col-md-2 auto grid-border"> {/** Media */}
+                <h4 className="editor-subtitle centered">
+                    One Click Export
+                </h4>
                 <ExportTab/>
+            </Col>
+            <Col className="col-md-2 auto grid-border"> {/** Media */}
+                <h4 className="editor-subtitle centered">
+                    File Options
+                </h4>
+                <ExportOptionForm name={name}/>
+            </Col>
+            <Col className=" auto grid-border" align="center"> {/**Timeline */}
+                <VideoTab name={"Project Preview"} />
             </Col>
         </Row>
     )
@@ -131,6 +144,16 @@ function Editor(props){
     const [help, toggleHelp] = useState(false); 
     const setHelp = () => toggleHelp(!help);
 
+    const [homeToolTipOpen, setTooltipOpen] = useState(false);
+    const toggleHomeToolTip = () => setTooltipOpen(!homeToolTipOpen);
+
+    const [saveToolTipOpen, setSaveTooltipOpen] = useState(false);
+    const toggleSaveToolTip = () => setSaveTooltipOpen(!saveToolTipOpen);
+
+    const [shareToolTipOpen, setShareTooltipOpen] = useState(false);
+    const toggleShareToolTip = () => setShareTooltipOpen(!shareToolTipOpen);
+
+
     return (
         <div>
             <Container fluid>
@@ -140,8 +163,10 @@ function Editor(props){
                 <Row className="grid-border">{/** Icons // Tabs // Export  */}
                     <Col className="col-md-3 auto" align="left">
                         <Row>
-                            <Link to="/home"><img alt="home button" className="editor-image-icon" src={homeIcon}/></Link>
+                            <Link to="/home"><img alt="home button" className="editor-image-icon" id="home-tooltip"src={homeIcon}/></Link>
+                            <Tooltip placement="bottom" isOpen={homeToolTipOpen} target="home-tooltip"toggle={toggleHomeToolTip}>Return To Menu</Tooltip>
                             <SaveButton/>
+                            <Tooltip placement="bottom" isOpen={saveToolTipOpen} target="save-tooltip"toggle={toggleSaveToolTip}>Save Project As</Tooltip>
                         </Row>
                     </Col>
                     <Col className="col-md-1" align="center"/>
@@ -177,7 +202,8 @@ function Editor(props){
                     <Col className="col-md-3" align="right">
                         <div>
                             <Button onClick={setHelp}> {help ? "Hide Help Menu" : "Show Help Menu"}</Button>
-                            <img alt="share icon"className="editor-image-icon" src={shareIcon}/>
+                            <img alt="share icon"className="editor-image-icon" id="share-tooltip" src={shareIcon}/>
+                            <Tooltip placement="bottom" isOpen={shareToolTipOpen} target="share-tooltip"toggle={toggleShareToolTip}>Share With...</Tooltip>
                         </div>
                     </Col>
                 </Row>

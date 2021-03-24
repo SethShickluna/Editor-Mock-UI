@@ -20,13 +20,6 @@ const sliderStyle = {
     marginLeft: 10,
 }
 
-function volumeSliders(){
-    return (
-        <div>
-
-        </div>
-    )
-}
 
 function VerticalSlider(){
     const classes = useStyles(); 

@@ -13,6 +13,12 @@
   
 }
 
+.export-page { 
+  max-width:  800px;
+  justify-content: center;
+  align-items: center;
+}
+
 .Menu-Title { 
     color: #ff9f43; 
     font-family: 'Helvetica Neue', sans-serif; 
@@ -41,6 +47,10 @@
   margin-left: 3%;
 }
 
+.export-page { 
+
+}
+
 .editor-subtitle { 
   color: #c8d6e5; 
   text-align: center;
@@ -54,6 +64,12 @@
 .help-box { 
   border: 1px dotted #576574;
   background-color: #353b48;
+}
+
+.export-button { 
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .timeline-icons{
@@ -114,6 +130,10 @@
 
 .FAQ-Question{
   font-weight: bold;
+}
+
+.export-icon:hover{ 
+  border: 1px solid #54a0ff;
 }
 
 .FAQ-Answer{

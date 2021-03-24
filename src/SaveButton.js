@@ -24,7 +24,7 @@ const SaveButton = (props) => {
     return (
         <div>
             <Form inline onSubmit={(e) => e.preventDefault()}>
-            <img alt="save icon"className="editor-image-icon" onClick={toggle} src={saveIconImg}/>
+            <img id="save-tooltip" alt="save icon"className="editor-image-icon" onClick={toggle} src={saveIconImg}/>
             </Form>
             <Modal isOpen={modal} toggle={toggle} className={className} >
                 <ModalHeader toggle={toggle}>Save Project As </ModalHeader>
