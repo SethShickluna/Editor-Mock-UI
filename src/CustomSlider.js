@@ -1,0 +1,34 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+
+const useStyles = makeStyles({
+  root: {
+    width: 655,
+    color: "#c8d6e5"
+  },
+});
+
+
+export default function CustomSlider(props) {
+  const classes = useStyles();
+  const [value, setValue] = React.useState([0, 100]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div className={classes.root}>
+      <Typography id="range-slider" gutterBottom>
+        Trim {props.name}
+      </Typography>
+      <Slider
+        value={value}
+        onChange={handleChange}
+        aria-labelledby="range-slider"
+      />
+    </div>
+  );
+}

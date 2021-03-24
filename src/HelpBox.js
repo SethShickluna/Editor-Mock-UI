@@ -1,5 +1,3 @@
-import {Button} from "reactstrap"; 
-
 function HelpBox(){
     return(
         <div className="help-box">
@@ -47,7 +45,6 @@ function HelpBox(){
                 Full Program Documentation
             </h5>
             <p style={{margin:"10px", color:"#c8d6e5"}}>Full documentation and instructions for this software can be found <a href="www.google.ca">here</a> on our website.</p>
-            <Button> Hide </Button>
         </div>
         
     </div>

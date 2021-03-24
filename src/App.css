@@ -8,6 +8,11 @@
   }
 }
 
+.timeline-controls { 
+  display: flex;
+  
+}
+
 .Menu-Title { 
     color: #ff9f43; 
     font-family: 'Helvetica Neue', sans-serif; 
@@ -138,6 +143,12 @@
   margin-left: 5px;
 }
 
+.effects-preview{
+  padding: 4px;
+  justify-content: center;
+  margin-left: 25px;
+}
+
 .media-content-box { 
   width: 350px;
   height: 250px;
@@ -174,7 +185,12 @@
   align-items: center;
   display: flex;
   margin: 40px;
+}
 
+.trimmer-icon-container{ 
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .Thumbnail-Box{
@@ -207,6 +223,15 @@
   margin-bottom: 20px;
 }
 
+.trimmer-image-preview { 
+  width: 100%;
+  border: 2px solid black;
+  border-left: 30px solid black;
+  border-right: 30px solid black;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
 .New-Project-Link {
   color: #61dafb;
   text-decoration:none;
@@ -218,7 +243,43 @@
     color: #61dafb; /** keep the color the same*/
 }
 
+.trimmer-bar { 
+  border: 1px solid #ffd32a;
+  padding: 2px;
+  margin-top: 5px;
+}
 
+.trimmer-bar { 
+  border: 1px solid #ffd32a;
+  padding: 2px;
+  margin-top: 5px;
+}
+
+.audio-track-container{ 
+  border: 1px solid #ffd32a;
+  padding: 5px;
+  margin: 25px;
+  min-width: 1200px;
+  min-height: 100px;
+}
+
+.protect-max{ 
+  max-height: 80%;
+}
+
+.trimmed-media-picture { 
+  width: 30%;
+  padding-bottom: 5px;
+}
+
+.trimmer-slider{
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.transition-name { 
+  margin-top: 20px;
+}
 
 @keyframes App-logo-spin {
   from {

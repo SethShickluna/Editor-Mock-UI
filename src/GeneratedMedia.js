@@ -1,6 +1,5 @@
 import React from "react"; 
-import {Link} from "react-router-dom"; 
-import {Container, Row, Col} from "reactstrap"; 
+import {Container, Row} from "reactstrap"; 
 
 import mediaIcon from "./mediaicon.png";
 
@@ -12,7 +11,7 @@ const projectNames3 = ["new_file", "nature", "cat"];
 
 function Thumbnail(props){
     return (<div className="media-preview">
-                <img className="media-logo" src={mediaIcon}/>
+                <img alt="media logo" className="media-logo" src={mediaIcon}/>
                 <p className="media-subtitle">
                     {props.name}
                 </p>

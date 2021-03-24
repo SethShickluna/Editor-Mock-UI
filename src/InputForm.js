@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, 
-    ModalFooter, Input, Label, Form, FormGroup 
+    ModalFooter, Input, Form, 
 } from 'reactstrap';
 
 const InputForm = (props) => {
@@ -11,13 +11,8 @@ const InputForm = (props) => {
     } = props;
   
     const [modal, setModal] = useState(false);
-    const [unmountOnClose, setUnmountOnClose] = useState(true);
   
     const toggle = () => setModal(!modal);
-    const changeUnmountOnClose = e => {
-        let value = e.target.value;
-        setUnmountOnClose(JSON.parse(value));
-    }
 
     const [name, setName] = React.useState("");
 
@@ -30,8 +25,8 @@ const InputForm = (props) => {
             <Form inline onSubmit={(e) => e.preventDefault()}>
                 <Button size="lg" color="primary" onClick={toggle}>{buttonLabel}</Button>
             </Form>
-            <Modal isOpen={modal} toggle={toggle} className={className} unmountOnClose={unmountOnClose}>
-                <ModalHeader toggle={toggle}>New Project</ModalHeader>
+            <Modal isOpen={modal} toggle={toggle} className={className}>
+                <ModalHeader toggle={toggle}>Enter Project Name</ModalHeader>
                 <ModalBody>
                     <Input type="username" placeholder="untitled project" rows={1} onChange={updateName}/>
                 </ModalBody>

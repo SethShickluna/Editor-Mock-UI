@@ -1,6 +1,6 @@
 import React from "react"; 
 import {Link} from "react-router-dom"; 
-import {Container, Row, Col} from "reactstrap"; 
+import {Container, Row} from "reactstrap"; 
 
 import videoIcon from "./video-icon.png";
 
@@ -17,7 +17,7 @@ function Thumbnail(props){
             editorProps:{name:props.name + fileExtension},
         }}>
             <div className="Thumbnail-Box">
-                <img className="App-logo" src={videoIcon} width="100"/>
+                <img alt="project" className="App-logo" src={videoIcon} width="100"/>
             </div>
             <h6 className="Content-Subtitle">
                {props.name + fileExtension}

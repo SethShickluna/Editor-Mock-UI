@@ -1,7 +1,7 @@
 //node imports
 import React, { useState } from "react"; 
 import { Link } from "react-router-dom";
-import {Container, Row, Col} from "reactstrap"; 
+import {Container, Row, Col, Button} from "reactstrap"; 
 
 //components
 import HelpBox from "./HelpBox"; 
@@ -10,11 +10,18 @@ import VideoTab from "./VideoTab.js";
 import GeneratedMedia from "./GeneratedMedia";
 import Timeline from "./Timeline";
 import SaveButton from "./SaveButton";
+import TrimmerTab from "./TrimmerTab";
+import AudioTab from "./AudioTab";
+import EffectsPanel from "./EffectsPanel";
+import AudioEffectsPanel from "./AudioEffectsPanel";
+import ExportTab from "./ExportTab";
+import RecentlyUsed from "./RecentlyUsed";
 
 //images//assets
 import homeIcon from "./homeicon.png"; 
 import quickexportIcon from "./quickexport.png"; 
 import shareIcon from "./shareicon.png";
+
 
 //{props.location.editorProps.name}
 
@@ -28,22 +35,24 @@ function getTabClass(index, myTab){
 function displayTab(tabNum, name){
     switch(tabNum){
         case 1:
-            return Trimmer(); 
+            return Trimmer(name); 
         case 2:
             return Audio(); 
         case 3:
             return Export(); 
         default: //realistically this is always 0
-            //video 
+            //vi deo 
             return Video(name);
     }
 }
 
-function Trimmer(){
+function Trimmer(name){
     return(
         <Row> {/** Video timeline */}
             <Col className="auto grid-border"> {/** Media */}
-                <div className="tab-container"></div>
+                <div className="tab-container">
+                     <TrimmerTab/>
+                </div>
             </Col>
         </Row>
     )
@@ -51,19 +60,25 @@ function Trimmer(){
 
 function Audio(){
     return(
-        <Row> {/** Video timeline */}
-        <Col className="auto grid-border"> {/** Media */}
-            <div className="tab-container"></div>
-        </Col>
-    </Row>
+        <Row style={{minHeight: "500px"}}> {/** Video timeline */}
+            <Col className="col-md-2 auto grid-border"> {/** Media */}
+                <h4 className="editor-subtitle centered">
+                    Audio Effects
+                </h4>
+                <AudioEffectsPanel/>
+            </Col>
+            <Col className=" auto grid-border" align="center"> {/**Timeline */}
+                <AudioTab />
+            </Col>
+        </Row>
     )
 }
 
 function Export(){
     return(
-        <Row> {/** Video timeline */}
+        <Row style={{minHeight: "500px"}}> {/** Video timeline */}
             <Col className="auto grid-border"> {/** Media */}
-                <div className="tab-container"></div>
+                <ExportTab/>
             </Col>
         </Row>
     )
@@ -76,7 +91,7 @@ function Video(name){
                 <h4 className="editor-subtitle centered">
                     Video Effects
                 </h4>
-                <GeneratedMedia/>
+                <EffectsPanel/>
             </Col>
             <Col className=" auto grid-border" align="center"> {/**Timeline */}
                 <VideoTab name={name} />
@@ -95,7 +110,6 @@ function Editor(props){
     }
 
     const [tab, setTab] = useState(0);
-
     const updateTab = obj => {
         switch(obj.target.innerHTML){
             case "Video":
@@ -107,13 +121,15 @@ function Editor(props){
             case "Audio":
                 setTab(2); 
                 break; 
-            case "Export":
+            default:
                 setTab(3);
                 break;
         }
         
     };
 
+    const [help, toggleHelp] = useState(false); 
+    const setHelp = () => toggleHelp(!help);
 
     return (
         <div>
@@ -124,7 +140,7 @@ function Editor(props){
                 <Row className="grid-border">{/** Icons // Tabs // Export  */}
                     <Col className="col-md-3 auto" align="left">
                         <Row>
-                            <Link to="/home"><img className="editor-image-icon" src={homeIcon}/></Link>
+                            <Link to="/home"><img alt="home button" className="editor-image-icon" src={homeIcon}/></Link>
                             <SaveButton/>
                         </Row>
                     </Col>
@@ -160,29 +176,37 @@ function Editor(props){
                     <Col className="col-md-1" align="center"/>
                     <Col className="col-md-3" align="right">
                         <div>
-                            <img className="editor-image-icon" src={quickexportIcon}/>
-                            <img className="editor-image-icon" src={shareIcon}/>
+                            <Button onClick={setHelp}> {help ? "Hide Help Menu" : "Show Help Menu"}</Button>
+                            <img alt="share icon"className="editor-image-icon" src={shareIcon}/>
                         </div>
                     </Col>
                 </Row>
                 <Row > {/**Contains  2 columns */}
-                    <Col className="auto"> {/**Contains part of the editor which switches via tab */}
-                        {displayTab(tab, projectName)}
-                        <Row> {/** Video timeline */}
-                            <Col className="col-md-2 auto grid-border"> {/** Media */}
-                                <h4 className="editor-subtitle centered">
-                                    Project Media
-                                </h4>
-                                <GeneratedMedia/>
-                            </Col>
-                            <Col className=" auto grid-border" align="center"> {/**Timeline */}
-                                <Timeline />
-                            </Col>
-                        </Row>
-                    </Col>
-                    <Col style={{marginTop:"2%"}} className="col-md-2"> {/**Skinny help tab */}
-                        <HelpBox/>
-                    </Col>
+                        <Col className="auto"> {/**Contains part of the editor which switches via tab */}
+                            {displayTab(tab, projectName)}
+                            <Row> {/** Video timeline */}
+                                <Col className="col-md-2 auto grid-border"> {/** Media */}
+                                    <h4 className="editor-subtitle centered">
+                                        Project Media
+                                    </h4>
+                                    <GeneratedMedia/>
+                                </Col>
+                                <Col className=" auto grid-border" align="center"> {/**Timeline */}
+                                    <Timeline />
+                                </Col>
+                            </Row>
+                        </Col>
+                        
+                        {help?
+                        <Col style={{marginTop:"2%"}} className="col-md-2"> {/**Skinny help tab */}
+                            <HelpBox/>
+                        </Col>: 
+                        <Col className="col-md-2 auto grid-border" align="left"> {/**Skinny help tab */}
+                            <h4 className="editor-subtitle centered">
+                                Recently Used Effects & Media
+                            </h4>
+                            <RecentlyUsed/>
+                        </Col>}
                 </Row>
             </Container>
         </div>    

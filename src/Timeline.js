@@ -1,10 +1,10 @@
-import React, {useState} from "react"; 
-import {Container, Col, Row, Button} from "reactstrap"; 
+import React from "react"; 
+import {Container, Col, Row} from "reactstrap"; 
 import { 
     MdInput, MdBlock, MdVerticalAlignCenter, 
-    MdTitle, MdPlayArrow, MdPause, MdSkipNext, MdSkipPrevious
+    MdTitle, MdPlayArrow, MdPause, MdSkipNext,
+    MdSkipPrevious, MdReplay5, MdReplay30
 } from "react-icons/md";
-
 
 //icons 
 import VideoIcon from "./videoicon.png";
@@ -37,7 +37,7 @@ function mediaTracks(num){
                      <MdBlock style={iconStyle}/>
                      <MdVerticalAlignCenter style={iconStyle}/>
                      <MdTitle style={iconStyle}/>
-                     <img src={trackImg[num - 1]} className="timeline-tracks"></img>
+                     <img alt="timeline item" src={trackImg[num - 1]} className="timeline-tracks"></img>
                 </div>
             </Col>
         </Row>
@@ -46,7 +46,7 @@ function mediaTracks(num){
 
 function Timeline(props){
 
-    const [isPaused, pause] = useState(false); 
+    //const [isPaused, pause] = useState(false); 
 
     return(
         <div className="timeline-container">
@@ -54,16 +54,21 @@ function Timeline(props){
                 <Row>
                 <Col className="col-md-5"align="left">
                         <div className="add-media-container">
-                            <img src={VideoIcon} className="timeline-icons"/>
-                            <img src={AudioIcon} className="timeline-icons"/>
+                            <img alt="icon a" src={VideoIcon} className="timeline-icons"/>
+                            <img alt="icon b"src={AudioIcon} className="timeline-icons"/>
                         </div>
                         
                 </Col>
                     <Col className="auto" align="left">
+                        <div className="timeline-controls">
                         <MdSkipPrevious size={40} style={mediaControlStyle}/>
+                        <MdReplay5 size={40} style={mediaControlStyle}/>
+                        <MdReplay30 size={40} style={mediaControlStyle}/>
                         <MdPlayArrow size={40} style={mediaControlStyle}/>
                         <MdPause size={40} style={mediaControlStyle}/>
                         <MdSkipNext size={40} style={mediaControlStyle}/>
+                        </div>
+                        
                     </Col>
                 </Row>
                 {/**Generate 3 tracks */}

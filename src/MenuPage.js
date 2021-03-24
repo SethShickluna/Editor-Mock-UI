@@ -1,6 +1,5 @@
 //npm co
 import React from "react"; 
-import { Link } from "react-router-dom";
 import {Container, Row, Col} from "reactstrap"; 
 
 import DemoProject from "./DemoProject";
@@ -29,8 +28,7 @@ function MenuPage(props){
                 <Col classname="col-md-12" align="center">
                     <div className="new-project-container">
                         <InputForm buttonLabel="Create New Project"/>
-                    </div>
-                    
+                        </div>
                 </Col>
             </Row>
            
