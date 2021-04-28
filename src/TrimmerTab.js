@@ -1,8 +1,8 @@
-import React from "react"; 
-import {Row, Col} from "reactstrap"; 
-import { 
-    MdFastForward, MdFastRewind, MdReplay5, MdReplay30, 
-    MdPlayArrow, MdPause, MdBlock, MdInput, MdVerticalAlignCenter, MdTitle
+import React, {useState} from "react";
+import {Row, Col, Tooltip} from "reactstrap";
+import {
+    MdFastForward, MdFastRewind, MdReplay5, MdReplay30,
+    MdPlayArrow, MdPause, MdBlock, MdInput, MdVerticalAlignCenter, MdTitle, MdSkipPrevious, MdSkipNext
 } from "react-icons/md";
 
 import CustomSlider from "./CustomSlider";
@@ -21,19 +21,43 @@ const iconStyle = {
 }
 
 
-function TrimmerTab(props){ 
+function TrimmerTab(props){
+
+    const [start, setStart] = useState(false)
+    const toggleStart = () => setStart(!start)
+
+    const [skip5, setSkip5] = useState(false)
+    const toggleSkip5 = () => setSkip5(!skip5)
+
+    const [skip30, setSkip30] = useState(false)
+    const toggleSkip30 = () => setSkip30(!skip30)
+
+    const [pause, setPause] = useState(false)
+    const togglePause = () => setPause(!pause)
+
+    const [play, setPlay] = useState(false)
+    const togglePlay = () => setPlay(!play)
+
+    const [end, setEnd] = useState(false)
+    const toggleEnd = () => setEnd(!end)
 
     return ( 
             <Row>
                 <Col>
                     <img alt="video preview" src={previewImage} className="trimmer-image-preview"></img>
                     <div className="trimmer-icon-container">
-                        <MdFastRewind size={40} style={mediaControlStyle}/>
-                        <MdReplay5 size={40} style={mediaControlStyle}/>
-                        <MdReplay30 size={40} style={mediaControlStyle}/>
-                        <MdPlayArrow size={40} style={mediaControlStyle}/>
-                        <MdPause size={40} style={mediaControlStyle}/>
-                        <MdFastForward size={40} style={mediaControlStyle}/>
+                        <MdSkipPrevious size={40} id="start" style={mediaControlStyle}/>
+                        <Tooltip placement="bottom" isOpen={start} target="start" toggle={toggleStart}>Jump to Start</Tooltip>
+                        <MdReplay5 size={40} id="back-5" style={mediaControlStyle}/>
+                        <Tooltip placement="bottom" isOpen={skip5} target="back-5" toggle={toggleSkip5}>Go Back 5 Seconds</Tooltip>
+                        <MdReplay30 size={40}  id="back-30" style={mediaControlStyle}/>
+                        <Tooltip placement="bottom" isOpen={skip30} target="back-30" toggle={toggleSkip30}>Go Back 30 Seconds</Tooltip>
+                        <MdPlayArrow size={40} id="play" style={mediaControlStyle}/>
+                        <Tooltip placement="bottom" isOpen={play} target="play" toggle={togglePlay}>Play</Tooltip>
+                        <MdPause size={40} id={"pause"} style={mediaControlStyle}/>
+                        <Tooltip placement="bottom" isOpen={pause} target="pause" toggle={togglePause}>Pause</Tooltip>
+                        <MdSkipNext size={40} id="end" style={mediaControlStyle}/>
+                        <Tooltip placement="bottom" isOpen={end} target="end" toggle={toggleEnd}>Jump to End</Tooltip>
                     </div>
                     <div className="trimmer-bar">
                         <p className="media-subtitle">Trim Media</p>
@@ -49,7 +73,7 @@ function TrimmerTab(props){
                 <Col>
                     <img alt="trimmer preview" src={previewImage} className="trimmer-image-preview"></img>
                     <div className="trimmer-icon-container">
-                        <p className="Content-Subtitle">Project Preview</p>
+                        <p className="Content-Subtitle">{props.name}</p>
                     </div>
                     <div className="trimmer-slider">
                         <CustomSlider name="Video"/>

@@ -3,9 +3,9 @@ import {Container, Row} from "reactstrap";
 
 import mediaIcon from "./mediaicon.png";
 
-const projectNames1 = ["mp4", "fishing", "batman"];
-const projectNames2 = ["file", "effect", "smoke"];
-const projectNames3 = ["new_file", "nature", "cat"];
+const projectNames1 = ["mp4", "fish", "bats"];
+const projectNames2 = ["file", "build", "smoke"];
+const projectNames3 = ["new", "yeet", "cat"];
 
 
 

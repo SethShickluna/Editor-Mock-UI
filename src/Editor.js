@@ -1,7 +1,7 @@
 //node imports
 import React, { useState } from "react"; 
 import { Link } from "react-router-dom";
-import {Container, Row, Col, Button, Tooltip} from "reactstrap"; 
+import {Container, Row, Col, Tooltip} from "reactstrap";
 
 //components
 import HelpBox from "./HelpBox"; 
@@ -51,7 +51,7 @@ function Trimmer(name){
         <Row> {/** Video timeline */}
             <Col className="auto grid-border"> {/** Media */}
                 <div className="tab-container">
-                     <TrimmerTab/>
+                     <TrimmerTab name={name}/>
                 </div>
             </Col>
         </Row>
@@ -91,7 +91,7 @@ function Export(name){
                 <ExportOptionForm name={name}/>
             </Col>
             <Col className=" auto grid-border" align="center"> {/**Timeline */}
-                <VideoTab name={"Project Preview"} />
+                <VideoTab name={name} />
             </Col>
         </Row>
     )
@@ -141,7 +141,7 @@ function Editor(props){
         
     };
 
-    const [help, toggleHelp] = useState(false); 
+    const [help, toggleHelp] = useState(true);
     const setHelp = () => toggleHelp(!help);
 
     const [homeToolTipOpen, setTooltipOpen] = useState(false);
@@ -201,7 +201,6 @@ function Editor(props){
                     <Col className="col-md-1" align="center"/>
                     <Col className="col-md-3" align="right">
                         <div>
-                            <Button onClick={setHelp}> {help ? "Hide Help Menu" : "Show Help Menu"}</Button>
                             <img alt="share icon"className="editor-image-icon" id="share-tooltip" src={shareIcon}/>
                             <Tooltip placement="bottom" isOpen={shareToolTipOpen} target="share-tooltip"toggle={toggleShareToolTip}>Share With...</Tooltip>
                         </div>
